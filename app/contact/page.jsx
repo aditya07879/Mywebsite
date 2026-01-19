@@ -93,8 +93,7 @@ export default function Contact() {
             >
               <h3 className="text-4xl text-accent">Let's work together</h3>
               <p className="text-white/60">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eum
-                nihil sapiente pariatur id totam.
+                Have an idea, project, or opportunity in mind? I’m always open to discussing new work, creative ideas, or collaborations. Drop your details and let’s connect.
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
