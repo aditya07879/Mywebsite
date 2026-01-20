@@ -1,39 +1,40 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Sun, Moon } from "lucide-react";
+import { Palette } from "lucide-react";
+
+const themes = ["pink", "purple", "blue", "green", "orange"];
 
 const ThemeToggle = () => {
-  const [dark, setDark] = useState(false);
+  const [index, setIndex] = useState(0); 
 
+  
   useEffect(() => {
-    const isDark = document.documentElement.classList.contains("dark");
-    setDark(isDark);
-  }, []);
+    document.documentElement.setAttribute(
+      "data-theme",
+      themes[index]
+    );
+  }, [index]);
 
-  const toggleTheme = () => {
-    document.documentElement.classList.toggle("dark");
-    setDark(!dark);
+  const changeTheme = () => {
+    setIndex((prev) => (prev + 1) % themes.length);
   };
 
   return (
     <button
-      onClick={toggleTheme}
+      onClick={changeTheme}
       className="
         fixed bottom-6 right-6 z-50
         w-12 h-12 rounded-full
         flex items-center justify-center
-        bg-background border border-border
-        shadow-lg
-        hover:scale-105 transition
+        bg-gradient-to-br from-black via-zinc-900 to-zinc-800
+        border border-white/10
+        shadow-[0_0_18px_var(--ring)]
+        hover:scale-110 transition-all
       "
-      aria-label="Toggle theme"
+      aria-label="Change accent theme"
     >
-      {dark ? (
-        <Sun className="w-5 h-5 text-yellow-400" />
-      ) : (
-        <Moon className="w-5 h-5 text-blue-500" />
-      )}
+      <Palette className="w-5 h-5 text-white" />
     </button>
   );
 };
